@@ -13,22 +13,38 @@ export class Doomer {
 }
 
 export class DoomerElement {
-  constructor(type, props, attributes) {
+  constructor(params) {
+    const { type, props = {}, attributes = {}, children = [] } = params;
+
     this.id = id + 1;
     this.type = type;
     this.props = props;
     this.attributes = attributes;
     this.state = {};
-    this.children = {};
+    this.children = children;
 
-    return this.create(this.type, this.attributes);
+    return this.create({
+      type: this.type,
+      attributes: this.attributes,
+      children: this.children,
+    });
   }
 
-  create(type, attributes) {
+  create({ type, attributes, children }) {
     const element = document.createElement(type);
+
     for (const key in attributes) {
       element.setAttribute(key, attributes[key]);
     }
+
+    children.forEach((child) => {
+      console.log(child);
+      if (child?.nodeType === Node.ELEMENT_NODE) {
+        element.appendChild(child);
+      } else {
+        element.textContent += child;
+      }
+    });
 
     return element;
   }
