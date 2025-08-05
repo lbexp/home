@@ -1,4 +1,13 @@
+let states = {};
+let oldStates = null;
 let id = 0;
+
+function _renderLoop(callback) {
+  setTimeout(() => {
+    callback();
+    _renderLoop(callback);
+  }, 1000);
+}
 
 export class Doomer {
   constructor() {}
@@ -6,43 +15,41 @@ export class Doomer {
   render(child) {
     const root = document.createElement('div');
     root.setAttribute('id', 'app');
-    root.appendChild(child);
-
     document.body.appendChild(root);
+
+    _renderLoop(() => {
+      if (states !== oldStates) {
+        const childElement = child.mount();
+        root.appendChild(childElement);
+        oldStates = states;
+      }
+    });
   }
 }
 
 export class DoomerElement {
   constructor(params) {
-    const { type, props = {}, attributes = {}, children = [] } = params;
+    const { type, attributes = {}, children = [] } = params;
 
     this.id = id + 1;
     this.type = type;
-    this.props = props;
     this.attributes = attributes;
-    this.state = {};
     this.children = children;
-
-    return this.create({
-      type: this.type,
-      attributes: this.attributes,
-      children: this.children,
-    });
   }
 
-  create({ type, attributes, children }) {
-    const element = document.createElement(type);
+  mount() {
+    const element = document.createElement(this.type);
 
-    for (const key in attributes) {
-      element.setAttribute(key, attributes[key]);
+    for (const key in this.attributes) {
+      element.setAttribute(key, this.attributes[key]);
     }
 
-    children.forEach((child) => {
-      console.log(child);
-      if (child?.nodeType === Node.ELEMENT_NODE) {
-        element.appendChild(child);
-      } else {
+    this.children.forEach((child) => {
+      if (typeof child === 'string') {
         element.textContent += child;
+      } else {
+        const childElement = child.mount();
+        element.appendChild(childElement);
       }
     });
 
