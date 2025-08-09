@@ -1,4 +1,29 @@
 /*
+ * HELPERS
+ */
+function cloneDeep(source) {
+  let clone;
+
+  if (typeof source === 'array') {
+    clone = [];
+  } else if (typeof source == 'object') {
+    clone = {};
+  }
+
+  for (const key in source) {
+    const value = source[key];
+
+    if (typeof value === 'object' || typeof value === 'array') {
+      clone[key] = cloneDeep(value);
+    } else {
+      clone[key] = value;
+    }
+  }
+
+  return clone;
+}
+
+/*
  * DOOMER ROOT & ELEMENT
  */
 
@@ -23,7 +48,7 @@ function _diff(current, old) {
     return true;
   }
 
-  currentKeys.forEach((key) => {
+  for (const key of currentKeys) {
     const currentValue = current[key];
     const oldValue = old[key];
 
@@ -35,7 +60,7 @@ function _diff(current, old) {
     // Add comparison for the non object type
     // Maybe with stringify and compare string
 
-    if (typeof currentValue !== oldValue) {
+    if (typeof currentValue !== typeof oldValue) {
       return true;
     }
 
@@ -50,7 +75,7 @@ function _diff(current, old) {
     if (currentValue !== oldValue) {
       return true;
     }
-  });
+  }
 
   return false;
 }
@@ -71,7 +96,7 @@ export class Doomer {
         root.innerHTML = '';
         const childElement = child.mount();
         root.appendChild(childElement);
-        oldStates = JSON.parse(JSON.stringify(states));
+        oldStates = cloneDeep(states);
       }
     });
   }
