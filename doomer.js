@@ -1,6 +1,7 @@
 /*
  * HELPERS
  */
+
 function cloneDeep(source) {
   let clone;
 
@@ -33,7 +34,7 @@ function _renderLoop(callback) {
   setTimeout(() => {
     callback();
     _renderLoop(callback);
-  }, 1000);
+  }, 50);
 }
 
 function _diff(current, old) {
@@ -55,10 +56,6 @@ function _diff(current, old) {
     if (!oldValue) {
       return true;
     }
-
-    // TODO:
-    // Add comparison for the non object type
-    // Maybe with stringify and compare string
 
     if (typeof currentValue !== typeof oldValue) {
       return true;
@@ -86,16 +83,21 @@ export class Doomer {
   render(child) {
     const root = document.createElement('div');
     const childElement = child.mount();
+
     root.setAttribute('id', 'app');
-    document.body.appendChild(root);
     root.appendChild(childElement);
+
+    document.body.appendChild(root);
 
     _renderLoop(() => {
       const diff = _diff(states, oldStates);
+
       if (diff) {
-        root.innerHTML = '';
         const childElement = child.mount();
+
+        root.innerHTML = '';
         root.appendChild(childElement);
+
         oldStates = cloneDeep(states);
       }
     });
@@ -125,7 +127,9 @@ export class DoomerElement {
     }
 
     this.children.forEach((child) => {
-      if (typeof child === 'string') {
+      if (typeof child === 'function') {
+        element.textContent += child();
+      } else if (typeof child === 'string') {
         element.textContent += child;
       } else {
         const childElement = child.mount();
