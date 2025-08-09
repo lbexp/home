@@ -3,16 +3,20 @@ import { Doomer, DoomerElement, useState } from './doomer.js';
 const counter = useState(1);
 const button = new DoomerElement({
   type: 'button',
-  children: ['click me', () => `${counter.value}`],
+  children: ['invoke'],
   attributes: {
     onclick: () => {
       counter.set(counter.value + 1);
     },
   },
 });
+const counterResult = new DoomerElement({
+  type: 'p',
+  children: [() => `${counter.value}`],
+});
 const text = new DoomerElement({
   type: 'p',
-  children: ['Clicks: ', button],
+  children: ['Counts: ', button, counterResult],
 });
 
 const app = new Doomer();
