@@ -2,7 +2,7 @@
  * HELPERS
  */
 
-function cloneDeep(source) {
+function _cloneDeep(source) {
   let clone;
 
   if (typeof source === 'array') {
@@ -15,7 +15,7 @@ function cloneDeep(source) {
     const value = source[key];
 
     if (typeof value === 'object' || typeof value === 'array') {
-      clone[key] = cloneDeep(value);
+      clone[key] = _cloneDeep(value);
     } else {
       clone[key] = value;
     }
@@ -98,7 +98,7 @@ export class Doomer {
         root.innerHTML = '';
         root.appendChild(childElement);
 
-        oldStates = cloneDeep(states);
+        oldStates = _cloneDeep(states);
       }
     });
   }
