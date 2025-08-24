@@ -128,9 +128,11 @@ export class DoomerElement {
 
     this.children.forEach((child) => {
       if (typeof child === 'function') {
-        element.textContent += child();
+        const childText = document.createTextNode(child());
+        element.appendChild(childText);
       } else if (typeof child === 'string') {
-        element.textContent += child;
+        const childText = document.createTextNode(child);
+        element.appendChild(childText);
       } else {
         const childElement = child.mount();
         element.appendChild(childElement);
