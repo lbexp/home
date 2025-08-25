@@ -1,0 +1,62 @@
+@keyframes appear {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.footer {
+  overflow: hidden;
+
+  & .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    padding-bottom: 24px;
+    animation: appear 0.5s ease;
+  }
+
+  & .social-media-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  & .github-anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .github-logo {
+    fill: var(--color-primary);
+  }
+
+  & .github-logo:hover {
+    fill: var(--color-sub-primary);
+  }
+
+  & .linkedin-anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .linkedin-logo {
+    fill: var(--color-primary);
+  }
+
+  & .linkedin-logo:hover {
+    fill: var(--color-sub-primary);
+  }
+
+  & .mail {
+    font-weight: normal;
+  }
+}
