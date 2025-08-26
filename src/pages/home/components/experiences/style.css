@@ -1,0 +1,196 @@
+@keyframes appear {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @media screen and (min-width: 769px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+  }
+
+  .title {
+    overflow: hidden;
+    font-size: 2rem;
+
+    @media screen and (min-width: 769px) {
+      font-size: 3.5rem;
+    }
+  }
+
+  .title-value {
+    height: 100%;
+    display: block;
+    animation: appear 0.5s ease 0s 1 normal both;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin: auto;
+
+    @media screen and (min-width: 769px) {
+      gap: 36px;
+      margin: unset;
+    }
+  }
+
+  .title-break {
+    display: none;
+
+    @media screen and (min-width: 769px) {
+      display: unset;
+    }
+  }
+}
+
+.item-journey {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+
+  @media screen and (min-width: 769px) {
+    gap: 36px;
+  }
+
+  .item-journey-circle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid 2px var(--color-primary);
+    border-radius: 50%;
+
+    &[data-active='true'] {
+      background-color: var(--color-sub-primary);
+    }
+  }
+
+  .item-journey-line {
+    position: absolute;
+    display: block;
+    width: 1.5px;
+    height: calc(150% - 45px);
+    top: calc(50% + 10px);
+    left: 9px;
+    background-color: var(--color-primary);
+
+    @media screen and (min-width: 769px) {
+      height: calc(150% - 62px);
+    }
+  }
+
+  .item-journey-title {
+    display: -webkit-box;
+    font-size: 1.5rem;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    @media screen and (min-width: 769px) {
+      font-size: 2rem;
+    }
+  }
+
+  .item-journey-subtitle {
+    display: -webkit-box;
+    font-size: 1.375rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    @media screen and (min-width: 769px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .item-journey-time {
+    display: -webkit-box;
+    font-size: 1.125rem;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    @media screen and (min-width: 769px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .item-journey-desc {
+    margin-top: 8px;
+    font-size: 1rem;
+
+    @media screen and (min-width: 769px) {
+      margin-top: 8px;
+      font-size: 1.125rem;
+    }
+  }
+
+  .item-journey-content-wrapper {
+    overflow: hidden;
+    min-height: 122px;
+    cursor: pointer;
+
+    @media screen and (min-width: 769px) {
+      min-height: 157px;
+    }
+  }
+
+  .item-journey-modal-wrapper {
+    overflow: hidden;
+  }
+
+  .item-journey-modal-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+
+    @media screen and (min-width: 769px) {
+      font-size: 2rem;
+    }
+  }
+
+  .item-journey-content-wrapper:hover > .item-journey-content-line {
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+
+  .item-journey-content-line {
+    display: block;
+    height: 2px;
+    width: 0%;
+    margin-top: 8px;
+    background-color: var(--color-sub-primary);
+  }
+
+  .item-journey-content-value {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+    animation: appear 0.5s ease 0s 1 normal both;
+
+    @media screen and (min-width: 769px) {
+      gap: 8px;
+    }
+  }
+}

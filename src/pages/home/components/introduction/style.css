@@ -1,0 +1,50 @@
+@keyframes appear {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes textdrop {
+  from {
+    transform: translateY(-150vh);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 480px;
+
+  .title {
+    margin-bottom: 16px;
+    font-size: 3rem;
+
+    @media screen and (min-width: 769px) {
+      margin-bottom: 24px;
+
+      line-height: 4.9rem;
+      font-size: 5rem;
+    }
+  }
+
+  .desc {
+    font-size: 1.25rem;
+    overflow: hidden;
+
+    @media screen and (min-width: 769px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .desc-value {
+    display: block;
+    animation: appear 0.25s ease 1.5s 1 normal both;
+  }
+}
