@@ -20,7 +20,7 @@
     gap: 50px;
   }
 
-  .title {
+  & .title {
     overflow: hidden;
     font-size: 2rem;
 
@@ -29,13 +29,13 @@
     }
   }
 
-  .title-value {
+  & .title-value {
     height: 100%;
     display: block;
     animation: appear 0.5s ease 0s 1 normal both;
   }
 
-  .content {
+  & .content {
     display: flex;
     flex-direction: column;
     gap: 36px;
@@ -47,7 +47,7 @@
     }
   }
 
-  .title-break {
+  & .title-break {
     display: none;
 
     @media screen and (min-width: 769px) {
@@ -66,7 +66,7 @@
     gap: 36px;
   }
 
-  .item-journey-circle {
+  & .item-journey-circle {
     display: block;
     width: 20px;
     height: 20px;
@@ -78,7 +78,7 @@
     }
   }
 
-  .item-journey-line {
+  & .item-journey-line {
     position: absolute;
     display: block;
     width: 1.5px;
@@ -92,7 +92,7 @@
     }
   }
 
-  .item-journey-title {
+  & .item-journey-title {
     display: -webkit-box;
     font-size: 1.5rem;
     font-weight: 300;
@@ -101,13 +101,9 @@
     line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-
-    @media screen and (min-width: 769px) {
-      font-size: 2rem;
-    }
   }
 
-  .item-journey-subtitle {
+  & .item-journey-subtitle {
     display: -webkit-box;
     font-size: 1.375rem;
     overflow: hidden;
@@ -121,7 +117,7 @@
     }
   }
 
-  .item-journey-time {
+  & .item-journey-time {
     display: -webkit-box;
     font-size: 1.125rem;
     font-weight: 300;
@@ -136,7 +132,7 @@
     }
   }
 
-  .item-journey-desc {
+  & .item-journey-desc {
     margin-top: 8px;
     font-size: 1rem;
 
@@ -146,7 +142,7 @@
     }
   }
 
-  .item-journey-content-wrapper {
+  & .item-journey-content-wrapper {
     overflow: hidden;
     min-height: 122px;
     cursor: pointer;
@@ -156,25 +152,25 @@
     }
   }
 
-  .item-journey-modal-wrapper {
+  & .item-journey-modal-wrapper {
     overflow: hidden;
-  }
-
-  .item-journey-modal-title {
-    font-size: 1.5rem;
-    font-weight: 300;
 
     @media screen and (min-width: 769px) {
       font-size: 2rem;
     }
   }
 
-  .item-journey-content-wrapper:hover > .item-journey-content-line {
+  & .item-journey-modal-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+  & .item-journey-content-wrapper:hover > .item-journey-content-line {
     width: 100%;
     transition: width 0.3s ease;
   }
 
-  .item-journey-content-line {
+  & .item-journey-content-line {
     display: block;
     height: 2px;
     width: 0%;
@@ -182,7 +178,7 @@
     background-color: var(--color-sub-primary);
   }
 
-  .item-journey-content-value {
+  & .item-journey-content-value {
     display: flex;
     flex-direction: column;
     gap: 4px;

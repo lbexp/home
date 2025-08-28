@@ -21,6 +21,23 @@ const Introduction = new DoomerElement({
         });
       }),
     }),
+    new DoomerElement({
+      type: 'p',
+      attributes: {
+        class: 'desc',
+      },
+      children: [
+        new DoomerElement({
+          type: 'span',
+          attributes: {
+            class: 'desc-value',
+          },
+          children: [
+            'Software Engineer who works around web technologies, based in Indonesia.',
+          ],
+        }),
+      ],
+    }),
   ],
 });
 
