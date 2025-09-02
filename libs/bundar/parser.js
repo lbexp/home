@@ -1,0 +1,62 @@
+const TOKEN = {
+  /*** Data/Characters ***/
+  // Data
+  UNDEFINED: 0,
+  NULL: 1,
+  NUMBER: 3,
+  STRING: 4,
+  // Characters
+  ENDLINE: 11,
+  NEWLINE: 12,
+  WHITESPACE: 13,
+  IDENT: 14,
+
+  /*** Keywords ***/
+  // Declaration
+  CONST: 101,
+  LET: 102,
+  VAR: 103,
+  FUNCTION: 104,
+  CLASS: 105,
+  // Conditonal
+  IF: 111,
+  ELSE: 112,
+  ELSEIF: 113,
+  WHILE: 114,
+  FOR: 115,
+  // Opening/Closing
+  CURLY_BRACE_OPEN: 121,
+  CURLY_BRACE_CLOSE: 122,
+  BRACKET_OPEN: 123,
+  BRACKET_CLOSE: 124,
+  SINGLE_QUOTE_OPEN: 125,
+  SINGLE_QUOTE_CLOSE: 126,
+  DOUBLE_QUOTE_OPEN: 127,
+  DOUBLE_QUOTE_CLOSE: 128,
+  BACKTICK_OPEN: 129,
+  BACKTICK_CLOSE: 130,
+  // Misc
+  IMPORT: 151,
+  EXPORT: 152,
+  DEFAULT: 153,
+  CONSTRUCTOR: 154,
+
+  /*** Operators ***/
+  // Single
+  EQUAL: 201,
+  PLUS: 202,
+  MINUS: 203,
+  ASTERISK: 204,
+  SLASH: 205,
+  MODULO: 206,
+  // Double
+  EQUAL_EQUAL: 207,
+  NOT_EQUAL: 208,
+  LOWER_THAN: 209,
+  LOWER_THAN_EQUAL: 210,
+  GREATER_THAN: 211,
+  GREATER_THAN_EQUAL: 212,
+  // Triple
+  EQUAL_EQUAL_EQUAL: 213,
+  NOT_EQUAL_EQUAL: 214,
+};
